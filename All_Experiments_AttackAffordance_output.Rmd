@@ -1,0 +1,384 @@
+---
+title: "All_experiments_AttackAffordance"
+author: "Song Qi"
+date: '2022-07-08'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Import data and packages
+
+```{r}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+
+exp_all <- read.csv("~/Downloads/exp_all_AttackAffordance.csv")
+```
+
+## Number of subjects
+```{r}
+length(unique(exp_all$subject))
+
+```
+
+## Number of stimulus
+```{r}
+length(unique(exp_all$type2))
+
+```
+
+## Categorical presentation of choice by contingency
+
+```{r}
+cross_tab_choice_contingency <-table(exp_all$contingency,exp_all$choice)
+prop_choice_contingency <- data.frame(prop.table(cross_tab_choice_contingency,1)*100)
+colnames(prop_choice_contingency) <- c("contingency", "choice", "percentage")
+prop_choice_contingency$contingency <- factor(prop_choice_contingency$contingency)
+prop_choice_contingency_chisq <- chisq.test(exp_all$contingency,exp_all$choice)
+prop_choice_contingency_chisq_stats <- round(with(prop_choice_contingency_chisq, c(statistic, parameter, p.value)), 3)
+
+prop_choice_contingency$counts <- c(cross_tab_choice_contingency[1,1], cross_tab_choice_contingency[2,1],cross_tab_choice_contingency[1,2],    cross_tab_choice_contingency[2,2])
+
+prop_choice_contingency
+
+```
+
+
+##Graph categorical presentation of choice and contingency
+```{r}
+prop_choice_contingency %>%
+   ggplot(aes(x = contingency, y = percentage, fill = choice)) +
+   geom_bar(stat="identity", position=position_dodge(.93)) +
+   ggtitle("choice by contingency") +
+   ylab("percentage chosen") +
+annotate("text", x = 1, y = 75, label = paste0("χ2 = ", prop_choice_contingency_chisq_stats[1], ", df = ", prop_choice_contingency_chisq_stats[2], ", p = ", prop_choice_contingency_chisq_stats[3] ))
+
+
+```
+
+
+
+## Check distribution of anger and fear 
+```{r}
+hist(exp_all$anger_rating)
+hist(exp_all$fear_rating)
+```
+
+
+
+## Look at average levels of anger by contingency
+```{r}
+levels_contingency <- levels(as.factor(exp_all$contingency)) 
+avg_anger_rating <- 0
+sd_anger_rating <- 0
+for (i in seq(levels_contingency)){
+  avg_anger_rating[i] <- mean(exp_all[exp_all$contingency==levels_contingency[i],]$anger_rating)
+  sd_anger_rating[i] <-  sd(exp_all[exp_all$contingency==levels_contingency[i],]$anger_rating)
+  avg_anger_ratings_by_contingency <- data.frame(cbind(levels_contingency,avg_anger_rating,sd_anger_rating ))
+}
+avg_anger_ratings_by_contingency
+
+```
+
+## Plot the anger mean differences between contingencies and t-test results
+```{r}
+test_mean_anger <- t.test(exp_all$anger_rating ~ exp_all$contingency, paired = TRUE)
+
+exp_all %>%
+  ggplot(aes(x = contingency, y = anger_rating)) +
+  geom_boxplot() +
+  annotate("text", x = 1.5, y = 5.5, label = paste0("t = ", round(test_mean_anger$statistic[1],2), ", df = ,", test_mean_anger$parameter, "\n", "p = ", test_mean_anger$p.value ))
+
+
+```
+
+## Plot the anger mean differences between contingencies broken down by choice
+
+```{r}
+
+exp_all %>%
+  ggplot(aes(x = contingency, y = anger_rating)) +
+  geom_boxplot() +
+  facet_grid(~choice)
+
+
+aov_test <- aov(anger_rating ~ contingency2 * choice2, data = exp_all)
+summary(aov_test)
+
+```
+
+
+
+
+## positive slopes for each subject
+
+```{r}
+slopes <- matrix(NA, nrow = length(unique(exp_all$subject)),ncol=length(unique(exp_all$type2)))
+
+for (j in seq(unique(exp_all$subject))){
+  for (i in seq(unique(exp_all$type2))) {
+    
+    slopes[j,i] <- exp_all[exp_all$contingency=="weapon" & exp_all$type2 == i & exp_all$subject == j,]$anger_rating - exp_all[exp_all$contingency=="non_weapon" & exp_all$type2 == i & exp_all$subject == j ,]$anger_rating
+    
+    anger_slopes_df <- data.frame(cbind(subect = unique(exp_all$subject), slopes))
+    colnames(anger_slopes_df) <- c("subject", unique(exp_all$type2))
+  }
+}
+
+```
+
+
+## proportion of positive slopes
+```{r}
+
+proportion_pos_slopes_per_subject <- 0 
+
+for (i in seq(nrow(anger_slopes_df))){
+  proportion_pos_slopes_per_subject[i] <-
+    sum(anger_slopes_df[i,c(2:21)]>0)/length(anger_slopes_df[i,c(2:21)])
+}
+
+proportion_pos_slopes_per_subject
+
+average_positive_slopes_across_subjects <- mean(proportion_pos_slopes_per_subject)
+paste0 ("average_positive_slopes_across_subjects = ", print(average_positive_slopes_across_subjects))
+
+
+
+```
+
+## proportion of positive slopes (only fighting)
+```{r}
+slopes_weapon <- matrix(NA, nrow =  length(unique(exp_all$subject)), ncol = length(unique(exp_all$type2)) )
+
+for (j in seq(unique(exp_all$subject))){ 
+  for (i in seq(unique(exp_all$type2))) {
+    
+    slopes_weapon[j,i] <- exp_all[exp_all$contingency=="weapon" & exp_all$type2 == i & exp_all$subject == j ,]$choice
+    
+  } }
+
+
+
+positive_slopes_when_weapon_and_fight <- anger_slopes_df[slopes_weapon == "fight", ]
+positive_slopes_when_weapon_and_esccape <- anger_slopes_df[slopes_weapon == "escape", ]
+
+
+
+proportion_pos_slopes_per_subject_fight <- 0
+for (i in seq(nrow(positive_slopes_when_weapon_and_fight)))
+{
+  proportion_pos_slopes_per_subject_fight[i] <-
+    sum(positive_slopes_when_weapon_and_fight[i,c(2:21)]>0)/length(positive_slopes_when_weapon_and_fight[i,c(2:21)])
+}
+
+
+
+average_positive_slopes_across_subjects_fight <- mean(proportion_pos_slopes_per_subject_fight, na.rm = TRUE)
+
+paste0 ("average_positive_slopes_across_subjects_fight =",print(average_positive_slopes_across_subjects_fight))
+
+
+```
+
+
+
+## proportion of positive slopes (add labels)
+```{r}
+
+store_slope <- data.frame(slope = 0,subject = 0,stim = 0,label = 0)
+
+
+for (j in 1:572){
+  for (k in 1:20){
+    
+    slope = exp_all[exp_all$subject == j & exp_all$type2 == k & exp_all$contingency2 == 1,]$anger_rating - exp_all[exp_all$subject == j & exp_all$type2 == k & exp_all$contingency2 == -1,]$anger_rating
+    
+    subject = j
+    stim = k
+    
+    if (exp_all[exp_all$subject == j & exp_all$type2 == k & exp_all$contingency2 == 1,]$choice2 == "1" & exp_all[exp_all$subject == j & exp_all$type2 == k & exp_all$contingency2 == -1,]$choice2 == "1") {label = "F-F"}
+    
+    else if (exp_all[exp_all$subject == j & exp_all$type2 == k & exp_all$contingency2 == 1,]$choice2 == "1" & exp_all[exp_all$subject == j & exp_all$type2 == k & exp_all$contingency2 == -1,]$choice2 == "-1") {label = "F-E"}
+    
+    else if (exp_all[exp_all$subject == j & exp_all$type2 == k & exp_all$contingency2 == 1,]$choice2 == "-1" & exp_all[exp_all$subject == j & exp_all$type2 == k & exp_all$contingency2 == -1,]$choice2 == "-1") {label = "E-E"}
+    
+    else {label = "E-F"}
+    
+    temp = data.frame(slope = slope, subject = subject, stim = stim, label = label)
+    store_slope = rbind(store_slope,temp)
+    
+  }}
+
+store_slope <- store_slope[-1,]
+
+test1 <- filter(store_slope,label == "F-F")
+test2 <- filter(store_slope,label == "F-E")
+test3 <- filter(store_slope,label == "E-E")
+test4 <- filter(store_slope,label == "E-F")
+
+length(test1[test1$slope>0,]$slope)/length(test1$slope)
+length(test2[test2$slope>0,]$slope)/length(test2$slope)
+length(test3[test3$slope>0,]$slope)/length(test3$slope)
+length(test4[test4$slope>0,]$slope)/length(test4$slope)
+
+
+
+
+store_slope$subject <- as.factor(store_slope$subject)
+store_slope$stim <- as.factor(store_slope$stim)
+
+
+store_slope %>%
+  ggplot(aes(x = label, y = slope, fill = stim)) +
+  geom_bar(stat="identity", position=position_dodge(.93)) +
+  ggtitle("slope by label and stim") +
+  ylab("slope") +
+  annotate("text", x = 3, y = 7.5, label = paste0("F-F = ", length(test1$slope), ", F-E = ", length(test2$slope), 
+                                                  ", E-E = ", length(test3$slope), ", E-F = ", length(test4$slope) ))
+
+
+
+store_slope %>%
+  ggplot(aes(x = label, y = slope, fill = subject)) +
+  geom_bar(stat="identity", position=position_dodge(.93)) +
+  ggtitle("slope by label and subject") +
+  ylab("slope") +
+  annotate("text", x = 3, y = 7.5, label = paste0("F-F = ", length(test1$slope), ", F-E = ", length(test2$slope), 
+                                                  ", E-E = ", length(test3$slope), ", E-F = ", length(test4$slope) ))
+
+
+
+```
+
+
+
+
+## Print out positive slope percentage, and positive slope magnitude. 
+```{r}
+length(test1[test1$slope>0,]$slope)/length(test1$slope)
+length(test2[test2$slope>0,]$slope)/length(test2$slope)
+length(test3[test3$slope>0,]$slope)/length(test3$slope)
+length(test4[test4$slope>0,]$slope)/length(test4$slope)
+
+mean(test1[test1$slope>0,]$slope)
+mean(test2[test2$slope>0,]$slope)
+mean(test3[test3$slope>0,]$slope)
+mean(test4[test4$slope>0,]$slope)
+
+p<-ggplot(store_slope, aes(x=slope, color=label)) +
+  geom_histogram(fill="white", position="dodge",binwidth = 0.1)+
+  #geom_density(alpha=0.6) + 
+  theme(legend.position="top")
+
+p
+
+store_slope1 <- data.frame(store_slope,experiment = "1")
+```
+
+## Bayesian models, Bayes factors and Loo-comparisons
+```{r}
+# Bridge sampling
+prior_mixed = get_prior(anger_rating ~ contingency2 + choice2 + contingency2:choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2),
+                        data   = exp_all)
+
+
+prior_mixed_2 = get_prior(anger_rating ~ contingency2 + choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2 ),
+                        data   = exp_all)
+
+full_brms = brm(anger_rating ~ contingency2 + choice2 + contingency2:choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2),
+                data   = exp_all,prior = prior_mixed,sample_prior = TRUE,save_pars = save_pars(all = TRUE),iter = 10000,control = list(adapt_delta = 0.99))
+
+null_brms = update(full_brms, formula = ~ .-contingency2:choice2)
+
+
+null_brms = brm(anger_rating ~ contingency2 + choice2  + (contingency2 + choice2 |subject)  + (contingency2 + choice2|type2),
+                data   = exp_all,prior = prior_mixed_2,sample_prior = TRUE,save_pars = save_pars(all = TRUE),iter = 10000,control = list(adapt_delta = 0.99))
+
+test_trst <- full_brms
+
+BF_brms_bridge = bayes_factor(full_brms, test_trst)
+
+BF_brms_bridge
+
+
+# Bayes_factor package
+
+full_BF = lmBF(anger_rating ~ contingency2 + choice2 + contingency2:choice2 + subject + type2,
+               data   = exp_all,whichRandom = "type2")
+
+null_BF = lmBF(anger_rating ~ contingency2 + choice2 + subject + type2,
+               data   = exp_all,whichRandom = "type2")
+
+              #data   = exp_all,whichRandom = c("subject","type2"))
+
+full_BF/null_BF
+
+
+# BIC
+
+BF_BIC = exp((BIC(null_brms) - BIC(full_brms))/2)
+
+
+# try re-scaling the prior
+
+newprior.bf = generalTestBF(anger_rating ~ contingency2 + choice2 + contingency2:choice2 + subject,
+                      data   = exp_all,whichRandom = c("subject"))
+
+newprior.bf 
+
+
+
+
+# new test null 
+
+null_brms = brm(anger_rating ~ contingency2 + choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2),
+                data   = exp_all,prior = prior_mixed_2,sample_prior = TRUE,save_pars = save_pars(all = TRUE),iter = 10000,control = list(adapt_delta = 0.99))
+
+BF_brms_bridge = bayes_factor(full_brms, null_brms)
+
+BF_brms_bridge
+
+####
+
+prior_mixed_2 = get_prior(anger_rating ~ choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2 ),
+                          data   = exp_all)
+
+
+null_brms2 <- brm(anger_rating ~ choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2),
+                  data   = exp_all,prior = prior_mixed_2,sample_prior = TRUE,save_pars = save_pars(all = TRUE),iter = 10000,control = list(adapt_delta = 0.99))
+
+BF_brms_bridge = bayes_factor(full_brms, null_brms2)
+
+####
+loo_compare
+
+fit1 <- add_criterion(full_brms, "waic")
+fit2 <- add_criterion(null_brms, "waic")
+
+
+loo_compare(fit1,fit2,criterion = "waic")
+
+fit3 <- add_criterion(null_brms2, "waic")
+
+
+loo_compare(fit1,fit3,criterion = "waic")
+
+
+## more regular statistics
+
+summary(full_brms)
+
+plot(full_brms)
+
+pp = brms::pp_check(full_brms)
+pp + theme_bw()
+```
+
+
+
+

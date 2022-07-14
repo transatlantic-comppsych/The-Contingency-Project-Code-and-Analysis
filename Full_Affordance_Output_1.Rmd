@@ -1,0 +1,233 @@
+---
+title: "Full_Affordance1"
+author: "Song Qi"
+date: '2022-07-13'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Import data and packages
+
+```{r}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+
+escape1 <- read.csv("~/Downloads/exp1_Full_Affordance.csv")
+```
+
+## Number of subjects
+```{r}
+length(unique(escape1$subject))
+
+```
+
+## Number of stimulus
+```{r}
+length(unique(escape1$type2))
+
+```
+
+## Categorical presentation of choice by contingency
+
+```{r}
+cross_tab_choice_contingency <-table(escape1$Affordance,escape1$choice)
+
+prop_choice_contingency <- data.frame(prop.table(cross_tab_choice_contingency,1)*100)
+
+colnames(prop_choice_contingency) <- c("Affordance", "choice", "percentage")
+
+prop_choice_contingency$contingency <- factor(prop_choice_contingency$Affordance)
+
+prop_choice_contingency_chisq <- chisq.test(escape1$Affordance,escape1$choice)
+
+prop_choice_contingency_chisq_stats <- round(with(prop_choice_contingency_chisq, c(statistic, parameter, p.value)), 3)
+
+prop_choice_contingency$counts <- c(cross_tab_choice_contingency[1,1], cross_tab_choice_contingency[2,1],cross_tab_choice_contingency[1,2],    cross_tab_choice_contingency[2,2])
+
+prop_choice_contingency
+
+```
+
+
+##Graph categorical presentation of choice and contingency
+```{r}
+prop_choice_contingency %>%
+  ggplot(aes(x = Affordance, y = percentage, fill = choice)) +
+  geom_bar(stat="identity", position=position_dodge(.93)) +
+  ggtitle("choice by Affordance") +
+  ylab("percentage chosen") +
+  annotate("text", x = 1, y = 75, label = paste0("χ2 = ", prop_choice_contingency_chisq_stats[1], ", df = ", prop_choice_contingency_chisq_stats[2], ", p = ", prop_choice_contingency_chisq_stats[3] ))
+
+
+```
+
+
+
+## Check distribution of anger and fear 
+```{r}
+hist(escape1$anger_rating)
+hist(escape1$fear_rating)
+```
+
+
+
+## Look at average levels of anger by contingency
+```{r}
+levels_contingency <- levels(as.factor(escape1$Affordance)) 
+avg_anger_rating <- 0
+sd_anger_rating <- 0
+
+for (i in seq(levels_contingency)){
+  avg_anger_rating[i] <- mean(escape1[escape1$Affordance==levels_contingency[i],]$anger_rating)
+  sd_anger_rating[i] <-  sd(escape1[escape1$Affordance==levels_contingency[i],]$anger_rating)
+  avg_anger_ratings_by_contingency <- data.frame(cbind(levels_contingency,avg_anger_rating,sd_anger_rating ))
+}
+
+avg_anger_ratings_by_contingency
+
+
+```
+
+## Plot the anger mean differences between contingencies and t-test results
+```{r}
+test_mean_anger <- t.test(escape1$anger_rating ~ escape1$contingency2, paired = TRUE)
+
+escape1 %>%
+  ggplot(aes(x = contingency2, y = anger_rating)) +
+  geom_boxplot() +
+  annotate("text", x = 1.5, y = 5.5, label = paste0("t = ", round(test_mean_anger$statistic[1],2), ", df = ,", test_mean_anger$parameter, "\n", "p = ", test_mean_anger$p.value ))
+
+
+```
+
+## Plot the anger mean differences between contingencies broken down by choice
+
+```{r}
+
+escape1 %>%
+  ggplot(aes(x = Affordance, y = anger_rating)) +
+  geom_boxplot() +
+  facet_grid(~choice)
+
+escape1 %>%
+  ggplot(aes(x = Affordance, y = fear_rating)) +
+  geom_boxplot() +
+  facet_grid(~choice)
+
+
+aov_test <- aov(anger_rating ~ Affordance * choice, data = escape1)
+summary(aov_test)
+
+aov_test <- aov(fear_rating ~ Affordance * choice, data = escape1)
+summary(aov_test)
+
+```
+
+
+
+## Bayesian models, Bayes factors and Loo-comparisons
+```{r}
+# Bridge sampling
+prior_mixed = get_prior(anger_rating ~ contingency2 + choice2 + contingency2:choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2),
+                        data   = exp_all)
+
+
+prior_mixed_2 = get_prior(anger_rating ~ contingency2 + choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2 ),
+                        data   = exp_all)
+
+full_brms = brm(anger_rating ~ contingency2 + choice2 + contingency2:choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2),
+                data   = exp_all,prior = prior_mixed,sample_prior = TRUE,save_pars = save_pars(all = TRUE),iter = 10000,control = list(adapt_delta = 0.99))
+
+null_brms = update(full_brms, formula = ~ .-contingency2:choice2)
+
+
+null_brms = brm(anger_rating ~ contingency2 + choice2  + (contingency2 + choice2 |subject)  + (contingency2 + choice2|type2),
+                data   = exp_all,prior = prior_mixed_2,sample_prior = TRUE,save_pars = save_pars(all = TRUE),iter = 10000,control = list(adapt_delta = 0.99))
+
+test_trst <- full_brms
+
+BF_brms_bridge = bayes_factor(full_brms, test_trst)
+
+BF_brms_bridge
+
+
+# Bayes_factor package
+
+full_BF = lmBF(anger_rating ~ contingency2 + choice2 + contingency2:choice2 + subject + type2,
+               data   = exp_all,whichRandom = "type2")
+
+null_BF = lmBF(anger_rating ~ contingency2 + choice2 + subject + type2,
+               data   = exp_all,whichRandom = "type2")
+
+              #data   = exp_all,whichRandom = c("subject","type2"))
+
+full_BF/null_BF
+
+
+# BIC
+
+BF_BIC = exp((BIC(null_brms) - BIC(full_brms))/2)
+
+
+# try re-scaling the prior
+
+newprior.bf = generalTestBF(anger_rating ~ contingency2 + choice2 + contingency2:choice2 + subject,
+                      data   = exp_all,whichRandom = c("subject"))
+
+newprior.bf 
+
+
+
+
+# new test null 
+
+null_brms = brm(anger_rating ~ contingency2 + choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2),
+                data   = exp_all,prior = prior_mixed_2,sample_prior = TRUE,save_pars = save_pars(all = TRUE),iter = 10000,control = list(adapt_delta = 0.99))
+
+BF_brms_bridge = bayes_factor(full_brms, null_brms)
+
+BF_brms_bridge
+
+####
+
+prior_mixed_2 = get_prior(anger_rating ~ choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2 ),
+                          data   = exp_all)
+
+
+null_brms2 <- brm(anger_rating ~ choice2 + (contingency2 + choice2 + contingency2:choice2|subject)  + (contingency2 + choice2 + contingency2:choice2|type2),
+                  data   = exp_all,prior = prior_mixed_2,sample_prior = TRUE,save_pars = save_pars(all = TRUE),iter = 10000,control = list(adapt_delta = 0.99))
+
+BF_brms_bridge = bayes_factor(full_brms, null_brms2)
+
+####
+loo_compare
+
+fit1 <- add_criterion(full_brms, "waic")
+fit2 <- add_criterion(null_brms, "waic")
+
+
+loo_compare(fit1,fit2,criterion = "waic")
+
+fit3 <- add_criterion(null_brms2, "waic")
+
+
+loo_compare(fit1,fit3,criterion = "waic")
+
+
+## more regular statistics
+
+summary(full_brms)
+
+plot(full_brms)
+
+pp = brms::pp_check(full_brms)
+pp + theme_bw()
+```
+
+
+
+

@@ -1,0 +1,573 @@
+"","deidentified_sub","age","gender","self_SES","marital","STAI_T","T_Ang"
+"1",1,22,"F","below middle","single",32,22
+"2",2,18,"M","above middle","single",42,15
+"3",3,35,"F","below middle","single",44,17
+"4",4,32,"M","below middle","single",32,23
+"5",5,27,"F","middle","single",34,36
+"6",6,20,"F","below middle","single",43,20
+"7",7,26,"M","low","married",39,16
+"8",8,44,"F","middle","single",34,12
+"9",9,19,"F","middle","single",51,21
+"10",10,33,"M","middle","single",43,25
+"11",11,51,"M","below middle","relationship",47,16
+"12",12,35,"F","below middle","single",39,31
+"13",13,23,"F","below middle","relationship",56,19
+"14",14,26,"F","above middle","single",48,31
+"15",15,52,"F","below middle","single",38,12
+"16",16,32,"F","below middle","single",47,15
+"17",17,53,"F","below middle","single",42,31
+"18",18,24,"F","below middle","single",35,25
+"19",19,57,"F","below middle","single",56,33
+"20",20,35,"M","below middle","single",50,30
+"21",21,22,"F","high","single",36,19
+"22",22,28,"M","below middle","single",42,21
+"23",23,41,"F","middle","single",30,35
+"24",24,27,"F","low","single",44,38
+"25",25,29,"F","below middle","single",34,16
+"26",26,30,"F","middle","married",34,13
+"27",27,49,"M","below middle","single",35,37
+"28",28,18,"M","middle","relationship",54,12
+"29",29,31,"F","below middle","single",31,18
+"30",30,41,"F","above middle","single",36,32
+"31",31,40,"F","high","single",30,27
+"32",32,32,"M","high","single",37,33
+"33",33,26,"M","below middle","single",58,15
+"34",34,19,"F","middle","single",33,16
+"35",35,22,"F","middle","married",30,29
+"36",36,19,"F","middle","single",45,21
+"37",37,33,"M","low","single",37,17
+"38",38,32,"M","high","relationship",37,24
+"39",39,30,"M","middle","single",44,15
+"40",40,41,"F","below middle","relationship",38,26
+"41",41,30,"M","middle","single",30,35
+"42",42,24,"F","below middle","single",56,21
+"43",43,35,"M","middle","single",39,21
+"44",44,33,"M","below middle","single",46,17
+"45",45,34,"F","below middle","relationship",52,21
+"46",46,33,"M","below middle","single",47,12
+"47",47,35,"F","middle","single",32,14
+"48",48,23,"M","above middle","single",42,38
+"49",49,34,"F","low","single",35,38
+"50",50,41,"F","middle","relationship",56,36
+"51",51,30,"M","high","single",41,21
+"52",52,19,"M","below middle","relationship",43,15
+"53",53,29,"F","high","single",48,33
+"54",54,21,"M","below middle","single",35,14
+"55",55,24,"M","below middle","single",52,34
+"56",56,27,"M","high","single",51,28
+"57",57,45,"M","below middle","married",59,16
+"58",58,29,"M","middle","single",30,19
+"59",59,40,"F","below middle","relationship",30,35
+"60",60,21,"M","below middle","relationship",30,28
+"61",61,36,"M","middle","relationship",56,21
+"62",62,31,"F","high","married",56,19
+"63",63,38,"M","below middle","single",50,21
+"64",64,33,"F","above middle","single",43,13
+"65",65,48,"M","below middle","single",44,12
+"66",66,27,"F","below middle","single",30,16
+"67",67,31,"F","middle","single",55,16
+"68",68,31,"F","middle","single",57,37
+"69",69,24,"M","middle","single",47,33
+"70",70,58,"F","above middle","single",36,31
+"71",71,34,"F","below middle","single",53,19
+"72",72,21,"M","middle","married",56,25
+"73",73,25,"F","middle","single",30,33
+"74",74,52,"F","below middle","married",35,22
+"75",75,28,"M","middle","single",50,32
+"76",76,41,"M","middle","single",43,16
+"77",77,39,"M","middle","single",35,34
+"78",78,28,"M","below middle","single",55,12
+"79",79,52,"F","low","single",35,32
+"80",80,38,"M","middle","relationship",31,21
+"81",81,40,"F","middle","relationship",48,20
+"82",82,27,"F","below middle","single",46,32
+"83",83,21,"F","below middle","single",36,33
+"84",84,40,"M","middle","single",42,29
+"85",85,18,"F","below middle","single",39,18
+"86",86,30,"M","below middle","single",58,30
+"87",87,20,"M","below middle","single",33,21
+"88",88,22,"F","middle","single",44,25
+"89",89,42,"M","below middle","relationship",52,21
+"90",90,21,"M","low","single",57,36
+"91",91,26,"F","below middle","single",34,25
+"92",92,18,"M","high","single",34,20
+"93",93,26,"M","below middle","single",57,33
+"94",94,23,"M","below middle","single",34,20
+"95",95,21,"M","high","single",42,22
+"96",96,19,"M","below middle","single",44,25
+"97",97,26,"F","below middle","single",53,24
+"98",98,19,"M","below middle","single",42,22
+"99",99,37,"M","above middle","single",38,19
+"100",100,36,"M","low","relationship",50,35
+"101",101,55,"F","middle","single",40,34
+"102",102,50,"M","above middle","single",32,30
+"103",103,34,"M","below middle","single",58,21
+"104",104,35,"F","middle","married",59,19
+"105",105,41,"F","low","single",31,34
+"106",106,22,"F","below middle","single",41,22
+"107",107,37,"F","below middle","single",35,12
+"108",108,25,"F","below middle","relationship",42,26
+"109",109,37,"F","below middle","single",59,19
+"110",110,20,"M","below middle","single",49,21
+"111",111,25,"F","below middle","relationship",43,25
+"112",112,34,"F","below middle","single",49,34
+"113",113,18,"M","above middle","single",50,27
+"114",114,22,"F","below middle","single",39,19
+"115",115,35,"F","middle","single",36,24
+"116",116,30,"M","high","relationship",54,24
+"117",117,56,"F","below middle","married",30,12
+"118",118,18,"M","above middle","single",46,24
+"119",119,30,"F","below middle","single",39,29
+"120",120,28,"F","below middle","relationship",56,14
+"121",121,24,"M","below middle","single",52,34
+"122",122,18,"F","middle","single",52,31
+"123",123,30,"M","below middle","relationship",49,33
+"124",124,25,"F","middle","relationship",39,26
+"125",125,20,"M","above middle","single",47,18
+"126",126,34,"F","below middle","relationship",52,30
+"127",127,26,"M","above middle","relationship",31,18
+"128",128,28,"F","below middle","single",37,26
+"129",129,40,"F","high","single",33,26
+"130",130,30,"M","middle","single",56,33
+"131",131,32,"M","above middle","married",34,15
+"132",132,51,"M","low","married",47,21
+"133",133,29,"M","middle","single",40,31
+"134",134,56,"M","middle","single",57,19
+"135",135,18,"M","high","single",58,20
+"136",136,60,"M","below middle","single",50,35
+"137",137,21,"M","below middle","single",50,26
+"138",138,23,"M","high","single",34,17
+"139",139,25,"F","above middle","relationship",51,25
+"140",140,25,"F","above middle","single",56,27
+"141",141,26,"F","below middle","single",58,28
+"142",142,33,"F","middle","relationship",32,19
+"143",143,24,"F","high","single",38,15
+"144",144,23,"F","below middle","single",47,21
+"145",145,37,"M","below middle","relationship",46,19
+"146",146,57,"M","below middle","married",36,37
+"147",147,24,"F","below middle","single",52,27
+"148",148,23,"M","middle","single",43,32
+"149",149,45,"M","below middle","relationship",42,27
+"150",150,20,"M","above middle","relationship",57,20
+"151",151,44,"F","low","single",48,25
+"152",152,19,"F","middle","single",38,23
+"153",153,42,"F","middle","relationship",55,19
+"154",154,30,"F","middle","relationship",39,36
+"155",155,44,"F","low","married",57,18
+"156",156,44,"F","below middle","single",50,27
+"157",157,31,"F","below middle","married",40,33
+"158",158,19,"M","middle","single",47,18
+"159",159,47,"M","below middle","single",49,14
+"160",160,28,"F","below middle","single",39,26
+"161",161,24,"F","low","relationship",42,12
+"162",162,30,"M","below middle","single",37,37
+"163",163,32,"M","below middle","relationship",48,29
+"164",164,24,"M","below middle","single",46,30
+"165",165,21,"F","below middle","single",42,32
+"166",166,37,"M","below middle","married",36,23
+"167",167,35,"F","below middle","relationship",36,21
+"168",168,20,"F","middle","single",42,24
+"169",169,27,"F","below middle","single",51,13
+"170",170,23,"M","high","single",59,34
+"171",171,30,"F","low","relationship",37,27
+"172",172,25,"F","below middle","single",37,19
+"173",173,53,"M","below middle","relationship",33,16
+"174",174,49,"F","middle","single",54,25
+"175",175,28,"M","below middle","single",50,23
+"176",176,38,"F","low","married",32,18
+"177",177,23,"M","below middle","single",39,28
+"178",178,35,"F","middle","married",59,32
+"179",179,52,"F","middle","single",55,36
+"180",180,22,"M","low","single",45,20
+"181",181,20,"M","below middle","single",40,16
+"182",182,18,"M","below middle","single",55,26
+"183",183,30,"F","below middle","relationship",38,34
+"184",184,20,"F","below middle","single",31,28
+"185",185,25,"M","high","single",41,19
+"186",186,31,"M","middle","single",53,23
+"187",187,38,"F","above middle","single",40,12
+"188",188,27,"M","above middle","relationship",59,29
+"189",189,24,"F","high","single",31,27
+"190",190,20,"M","above middle","single",52,23
+"191",191,43,"M","high","single",31,15
+"192",192,45,"F","above middle","relationship",43,24
+"193",193,20,"F","low","single",32,24
+"194",194,26,"M","low","married",50,14
+"195",195,36,"M","below middle","single",30,26
+"196",196,23,"F","high","single",48,12
+"197",197,23,"F","low","married",42,27
+"198",198,22,"M","middle","relationship",53,26
+"199",199,37,"F","middle","relationship",35,33
+"200",200,24,"F","low","single",58,36
+"201",201,38,"M","above middle","single",44,34
+"202",202,30,"M","middle","single",36,21
+"203",203,29,"M","middle","relationship",59,26
+"204",204,40,"M","below middle","relationship",57,25
+"205",205,42,"M","high","single",37,38
+"206",206,52,"F","high","relationship",31,12
+"207",207,32,"M","high","single",30,37
+"208",208,22,"M","below middle","single",34,28
+"209",209,32,"M","below middle","married",41,37
+"210",210,25,"F","high","single",38,31
+"211",211,23,"F","below middle","single",54,19
+"212",212,22,"F","middle","single",59,12
+"213",213,42,"M","below middle","single",31,23
+"214",214,35,"F","low","relationship",47,35
+"215",215,28,"F","high","married",49,19
+"216",216,32,"M","middle","single",47,24
+"217",217,32,"M","below middle","relationship",54,17
+"218",218,30,"M","above middle","single",31,21
+"219",219,27,"F","low","married",34,13
+"220",220,30,"M","middle","single",33,22
+"221",221,38,"F","middle","single",37,12
+"222",222,33,"F","middle","single",38,25
+"223",223,25,"F","middle","single",48,26
+"224",224,37,"F","above middle","married",35,36
+"225",225,22,"F","middle","single",34,24
+"226",226,22,"F","above middle","single",50,19
+"227",227,27,"M","below middle","relationship",31,18
+"228",228,30,"F","below middle","single",39,12
+"229",229,20,"F","low","single",42,13
+"230",230,27,"F","middle","relationship",45,15
+"231",231,19,"F","below middle","single",42,36
+"232",232,27,"M","below middle","single",41,20
+"233",233,54,"M","below middle","single",52,37
+"234",234,56,"F","middle","single",32,38
+"235",235,35,"F","middle","single",41,21
+"236",236,27,"F","below middle","relationship",41,18
+"237",237,23,"F","above middle","relationship",54,24
+"238",238,28,"F","below middle","relationship",42,17
+"239",239,38,"F","middle","single",32,15
+"240",240,21,"M","below middle","single",31,29
+"241",241,31,"F","middle","single",34,36
+"242",242,33,"F","high","single",44,21
+"243",243,27,"F","low","single",35,15
+"244",244,29,"F","middle","single",31,23
+"245",245,29,"M","below middle","relationship",54,31
+"246",246,27,"M","middle","married",36,25
+"247",247,18,"F","below middle","relationship",48,21
+"248",248,21,"M","below middle","single",31,32
+"249",249,37,"F","below middle","relationship",51,38
+"250",250,27,"F","below middle","single",31,15
+"251",251,43,"F","above middle","single",50,15
+"252",252,34,"M","below middle","single",37,16
+"253",253,24,"M","above middle","single",53,37
+"254",254,19,"M","above middle","relationship",47,20
+"255",255,42,"F","middle","relationship",38,37
+"256",256,29,"M","middle","single",39,12
+"257",257,21,"M","below middle","married",47,24
+"258",258,21,"M","middle","married",49,19
+"259",259,37,"F","below middle","single",50,25
+"260",260,31,"F","low","single",40,32
+"261",261,24,"F","below middle","relationship",48,33
+"262",262,39,"F","middle","single",35,28
+"263",263,51,"F","above middle","relationship",39,24
+"264",264,20,"F","middle","single",39,29
+"265",265,45,"F","low","married",43,23
+"266",266,36,"M","middle","single",57,18
+"267",267,31,"M","high","relationship",39,30
+"268",268,41,"F","below middle","single",40,35
+"269",269,29,"F","middle","married",39,35
+"270",270,25,"F","above middle","single",52,19
+"271",271,43,"M","below middle","relationship",34,14
+"272",272,28,"F","below middle","married",40,20
+"273",273,19,"F","high","relationship",36,34
+"274",274,25,"M","below middle","single",32,13
+"275",275,24,"M","high","single",32,19
+"276",276,29,"F","below middle","married",31,14
+"277",277,39,"F","low","single",33,13
+"278",278,23,"F","below middle","married",37,27
+"279",279,32,"F","low","single",35,36
+"280",280,53,"M","high","single",38,25
+"281",281,25,"M","low","single",59,16
+"282",282,20,"F","above middle","relationship",41,14
+"283",283,34,"F","high","married",36,14
+"284",284,18,"F","middle","relationship",49,16
+"285",285,19,"M","low","single",59,38
+"286",286,41,"F","below middle","relationship",46,21
+"287",287,23,"F","middle","single",36,37
+"288",288,24,"F","above middle","single",49,25
+"289",289,28,"F","high","single",59,22
+"290",290,54,"M","low","relationship",31,29
+"291",291,33,"M","below middle","married",43,19
+"292",292,30,"F","middle","relationship",45,18
+"293",293,29,"F","middle","relationship",43,29
+"294",294,33,"F","below middle","single",58,30
+"295",295,32,"F","middle","single",33,12
+"296",296,24,"M","middle","relationship",47,27
+"297",297,27,"F","below middle","single",38,23
+"298",298,30,"M","middle","married",57,36
+"299",299,27,"F","below middle","married",52,29
+"300",300,30,"M","below middle","relationship",51,17
+"301",301,18,"M","low","relationship",45,33
+"302",302,21,"M","above middle","relationship",43,24
+"303",303,24,"M","above middle","single",39,14
+"304",304,60,"F","low","single",55,25
+"305",305,22,"F","below middle","single",31,16
+"306",306,26,"F","below middle","relationship",44,14
+"307",307,28,"F","middle","relationship",56,32
+"308",308,34,"M","low","single",35,28
+"309",309,29,"M","above middle","single",55,18
+"310",310,22,"F","below middle","single",47,33
+"311",311,33,"F","middle","single",57,24
+"312",312,31,"M","above middle","single",52,12
+"313",313,23,"F","high","relationship",33,38
+"314",314,29,"F","below middle","single",32,12
+"315",315,27,"F","above middle","single",34,35
+"316",316,19,"F","above middle","single",58,29
+"317",317,33,"M","middle","relationship",38,28
+"318",318,42,"F","middle","single",36,18
+"319",319,43,"M","above middle","single",31,16
+"320",320,54,"M","high","single",35,19
+"321",321,28,"M","below middle","single",44,27
+"322",322,47,"M","below middle","married",42,17
+"323",323,32,"M","below middle","relationship",47,38
+"324",324,38,"M","below middle","single",59,36
+"325",325,50,"M","below middle","single",31,24
+"326",326,25,"M","above middle","married",51,22
+"327",327,51,"F","above middle","single",32,14
+"328",328,27,"F","middle","single",31,20
+"329",329,39,"F","below middle","relationship",58,26
+"330",330,22,"F","below middle","married",44,26
+"331",331,51,"M","below middle","single",57,18
+"332",332,33,"F","below middle","relationship",32,29
+"333",333,37,"M","below middle","single",32,14
+"334",334,54,"M","low","relationship",46,31
+"335",335,27,"F","high","married",53,17
+"336",336,24,"F","middle","relationship",52,24
+"337",337,36,"M","middle","single",39,18
+"338",338,25,"M","middle","married",38,32
+"339",339,33,"F","low","single",33,37
+"340",340,39,"F","above middle","relationship",31,26
+"341",341,60,"M","high","single",40,24
+"342",342,26,"F","low","relationship",41,25
+"343",343,25,"F","low","single",37,30
+"344",344,44,"M","below middle","single",56,13
+"345",345,25,"F","below middle","relationship",40,23
+"346",346,26,"F","low","single",32,16
+"347",347,31,"M","below middle","single",52,18
+"348",348,31,"M","middle","single",47,23
+"349",349,26,"F","middle","single",38,12
+"350",350,20,"F","above middle","single",45,29
+"351",351,30,"F","below middle","single",39,25
+"352",352,33,"M","high","relationship",38,24
+"353",353,29,"F","below middle","single",58,34
+"354",354,28,"F","middle","relationship",44,20
+"355",355,21,"M","low","single",41,29
+"356",356,35,"M","below middle","single",33,35
+"357",357,36,"F","middle","relationship",32,36
+"358",358,18,"F","below middle","single",42,33
+"359",359,19,"M","low","relationship",58,32
+"360",360,23,"M","low","relationship",33,35
+"361",361,52,"F","below middle","single",44,31
+"362",362,20,"F","below middle","married",41,31
+"363",363,58,"M","middle","single",48,38
+"364",364,40,"F","below middle","single",54,33
+"365",365,31,"M","below middle","single",57,32
+"366",366,34,"F","above middle","single",42,27
+"367",367,31,"F","middle","single",36,19
+"368",368,25,"M","below middle","single",44,27
+"369",369,50,"F","middle","single",39,19
+"370",370,36,"M","below middle","relationship",54,30
+"371",371,41,"M","middle","single",59,32
+"372",372,29,"M","low","single",42,32
+"373",373,24,"F","middle","single",40,13
+"374",374,33,"M","high","single",36,15
+"375",375,43,"F","low","single",57,37
+"376",376,24,"F","low","relationship",57,14
+"377",377,36,"M","below middle","single",46,37
+"378",378,35,"F","middle","single",48,28
+"379",379,28,"F","high","single",39,19
+"380",380,23,"F","middle","single",58,31
+"381",381,38,"F","middle","single",34,13
+"382",382,50,"M","low","married",42,16
+"383",383,40,"F","below middle","single",49,26
+"384",384,32,"M","below middle","relationship",47,20
+"385",385,21,"F","below middle","relationship",46,19
+"386",386,44,"M","below middle","single",36,27
+"387",387,32,"F","below middle","single",57,22
+"388",388,29,"M","below middle","single",33,33
+"389",389,28,"F","low","single",40,24
+"390",390,22,"M","above middle","relationship",45,27
+"391",391,33,"M","below middle","single",47,22
+"392",392,39,"F","middle","relationship",58,38
+"393",393,42,"F","middle","single",35,38
+"394",394,25,"M","middle","relationship",42,28
+"395",395,40,"F","above middle","single",56,13
+"396",396,18,"M","below middle","single",37,28
+"397",397,22,"M","low","married",57,30
+"398",398,36,"F","middle","married",44,12
+"399",399,32,"M","below middle","relationship",34,25
+"400",400,21,"M","low","relationship",40,17
+"401",401,27,"F","below middle","relationship",59,37
+"402",402,21,"M","high","single",57,24
+"403",403,18,"F","low","single",50,26
+"404",404,33,"F","below middle","single",43,20
+"405",405,28,"F","below middle","single",33,17
+"406",406,24,"F","below middle","single",47,29
+"407",407,30,"M","below middle","relationship",31,33
+"408",408,18,"F","below middle","married",44,13
+"409",409,27,"F","below middle","relationship",37,36
+"410",410,21,"F","middle","single",34,28
+"411",411,21,"M","middle","single",37,25
+"412",412,22,"F","above middle","single",40,18
+"413",413,27,"F","high","relationship",49,30
+"414",414,42,"F","low","single",47,16
+"415",415,30,"F","below middle","single",35,28
+"416",416,21,"F","below middle","single",31,22
+"417",417,34,"F","below middle","single",31,36
+"418",418,33,"F","below middle","married",59,35
+"419",419,41,"F","low","single",34,38
+"420",420,20,"F","below middle","relationship",54,32
+"421",421,35,"F","high","single",44,35
+"422",422,23,"F","low","single",50,33
+"423",423,28,"M","middle","married",59,16
+"424",424,42,"F","below middle","single",34,22
+"425",425,46,"F","below middle","married",57,12
+"426",426,21,"F","below middle","married",41,31
+"427",427,19,"F","middle","single",58,31
+"428",428,43,"M","middle","married",33,22
+"429",429,28,"F","below middle","single",35,33
+"430",430,42,"F","below middle","married",57,16
+"431",431,34,"F","below middle","married",52,20
+"432",432,19,"F","below middle","single",56,21
+"433",433,46,"M","high","relationship",36,33
+"434",434,23,"M","middle","single",59,34
+"435",435,21,"F","below middle","single",49,16
+"436",436,31,"M","middle","single",44,19
+"437",437,59,"M","middle","single",58,15
+"438",438,39,"F","middle","single",37,38
+"439",439,18,"F","above middle","single",50,22
+"440",440,35,"F","middle","single",49,38
+"441",441,38,"M","below middle","relationship",31,35
+"442",442,21,"F","above middle","single",36,25
+"443",443,30,"M","below middle","married",38,33
+"444",444,32,"F","middle","relationship",39,14
+"445",445,33,"F","high","single",42,17
+"446",446,34,"M","below middle","single",39,38
+"447",447,31,"F","above middle","single",57,17
+"448",448,31,"M","below middle","single",53,24
+"449",449,43,"F","below middle","relationship",35,27
+"450",450,28,"M","middle","relationship",56,21
+"451",451,48,"F","below middle","relationship",38,23
+"452",452,42,"F","above middle","single",39,17
+"453",453,32,"F","middle","married",34,33
+"454",454,32,"F","middle","single",51,29
+"455",455,19,"F","below middle","single",37,27
+"456",456,41,"F","middle","single",49,20
+"457",457,30,"F","low","relationship",57,34
+"458",458,56,"M","below middle","relationship",51,14
+"459",459,20,"M","below middle","single",46,23
+"460",460,37,"F","low","relationship",32,36
+"461",461,23,"F","middle","single",32,14
+"462",462,31,"F","below middle","single",37,32
+"463",463,29,"M","below middle","single",45,33
+"464",464,21,"F","below middle","single",37,31
+"465",465,30,"M","below middle","single",42,13
+"466",466,31,"F","middle","single",34,37
+"467",467,37,"F","low","relationship",52,12
+"468",468,41,"F","middle","single",39,29
+"469",469,45,"M","above middle","relationship",34,20
+"470",470,45,"M","below middle","single",45,21
+"471",471,31,"F","middle","single",50,31
+"472",472,52,"F","below middle","single",38,30
+"473",473,29,"F","below middle","single",45,36
+"474",474,25,"M","below middle","single",47,20
+"475",475,25,"M","high","single",56,14
+"476",476,34,"M","below middle","single",31,20
+"477",477,35,"F","low","single",40,28
+"478",478,22,"F","middle","single",33,22
+"479",479,26,"F","middle","single",35,20
+"480",480,18,"M","middle","single",46,28
+"481",481,23,"M","below middle","single",54,36
+"482",482,22,"F","above middle","single",38,12
+"483",483,32,"M","middle","single",52,37
+"484",484,40,"M","below middle","single",53,22
+"485",485,18,"F","below middle","single",46,38
+"486",486,18,"F","below middle","relationship",48,22
+"487",487,41,"F","low","single",35,17
+"488",488,19,"M","high","single",54,30
+"489",489,25,"F","above middle","single",32,16
+"490",490,32,"F","below middle","single",59,21
+"491",491,28,"F","high","relationship",46,13
+"492",492,41,"F","below middle","single",50,31
+"493",493,22,"F","high","single",32,14
+"494",494,33,"F","low","single",52,15
+"495",495,24,"M","high","relationship",55,31
+"496",496,51,"M","below middle","single",49,28
+"497",497,37,"F","middle","relationship",50,35
+"498",498,38,"F","high","single",46,38
+"499",499,38,"M","below middle","single",36,26
+"500",500,42,"M","above middle","single",50,20
+"501",501,59,"M","below middle","single",48,31
+"502",502,20,"M","above middle","relationship",31,12
+"503",503,22,"F","below middle","single",52,15
+"504",504,37,"M","high","married",56,20
+"505",505,20,"M","middle","single",52,34
+"506",506,34,"F","below middle","single",31,29
+"507",507,40,"M","above middle","single",31,23
+"508",508,28,"M","below middle","single",48,20
+"509",509,26,"F","below middle","relationship",46,29
+"510",510,36,"M","below middle","single",57,37
+"511",511,28,"F","middle","married",37,20
+"512",512,21,"F","below middle","relationship",44,36
+"513",513,26,"F","below middle","single",40,34
+"514",514,44,"F","high","single",59,21
+"515",515,22,"M","below middle","relationship",53,21
+"516",516,29,"M","below middle","single",57,28
+"517",517,23,"M","above middle","married",54,31
+"518",518,29,"M","below middle","single",55,19
+"519",519,39,"M","below middle","relationship",33,17
+"520",520,52,"M","below middle","single",31,22
+"521",521,39,"M","high","single",48,20
+"522",522,20,"M","middle","single",51,30
+"523",523,22,"F","low","single",42,27
+"524",524,37,"F","below middle","single",34,37
+"525",525,24,"F","below middle","relationship",58,37
+"526",526,41,"F","high","relationship",39,19
+"527",527,23,"F","middle","married",59,23
+"528",528,44,"F","below middle","single",41,13
+"529",529,27,"M","below middle","single",55,31
+"530",530,18,"F","below middle","relationship",55,16
+"531",531,24,"F","high","married",39,36
+"532",532,28,"F","middle","relationship",44,24
+"533",533,53,"F","high","relationship",41,15
+"534",534,23,"F","middle","single",52,22
+"535",535,18,"F","middle","single",50,34
+"536",536,23,"F","above middle","relationship",44,37
+"537",537,27,"M","high","single",38,38
+"538",538,37,"M","high","single",52,14
+"539",539,26,"F","above middle","relationship",44,37
+"540",540,18,"F","low","relationship",51,32
+"541",541,22,"F","high","single",38,21
+"542",542,20,"F","below middle","single",38,32
+"543",543,34,"F","below middle","single",59,22
+"544",544,37,"F","above middle","single",41,29
+"545",545,20,"M","below middle","single",55,20
+"546",546,31,"F","below middle","single",34,35
+"547",547,28,"F","below middle","relationship",53,33
+"548",548,29,"M","middle","single",37,24
+"549",549,47,"F","middle","single",30,21
+"550",550,25,"F","below middle","single",54,37
+"551",551,34,"F","below middle","single",42,17
+"552",552,32,"F","middle","relationship",52,38
+"553",553,31,"F","middle","single",36,14
+"554",554,35,"F","below middle","single",43,31
+"555",555,34,"F","low","single",41,29
+"556",556,59,"F","high","single",59,34
+"557",557,32,"M","middle","married",34,16
+"558",558,19,"M","below middle","married",42,16
+"559",559,37,"M","high","single",44,36
+"560",560,39,"F","above middle","relationship",51,35
+"561",561,21,"M","below middle","single",47,28
+"562",562,21,"F","high","married",31,25
+"563",563,35,"F","middle","relationship",30,29
+"564",564,23,"F","high","single",42,16
+"565",565,40,"M","high","single",46,20
+"566",566,48,"F","middle","single",55,15
+"567",567,18,"F","middle","relationship",51,30
+"568",568,29,"M","below middle","single",34,16
+"569",569,26,"M","middle","relationship",40,16
+"570",570,19,"M","middle","single",47,23
+"571",571,22,"M","high","relationship",45,20
+"572",572,56,"M","below middle","married",33,20
